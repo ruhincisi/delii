@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senin İçin, Bücür Deli Manyak!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff1493, #ff69b4, #ffb6c1, #ff00ff);
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+            animation: backgroundShift 5s infinite alternate;
+        }
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(to right, #ff1493, #ff69b4, #ffb6c1); }
+            100% { background: linear-gradient(to right, #ff00ff, #ff1493, #ff69b4); }
+        }
+        .container {
+            padding: 50px;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 3.5em;
+            font-weight: bold;
+            text-shadow: 0 0 20px #ff1493, 0 0 30px #ff69b4, 0 0 50px #ff00ff;
+            animation: glow 2s infinite alternate, bounce 1s infinite alternate;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 15px #ff1493, 0 0 30px #ff69b4, 0 0 50px #ff00ff; }
+            100% { text-shadow: 0 0 20px #ff69b4, 0 0 40px #ff1493, 0 0 60px #ff00ff; }
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        p {
+            font-size: 1.6em;
+            max-width: 800px;
+            margin: auto;
+            font-style: italic;
+            text-shadow: 2px 2px 10px #ff1493, 2px 2px 15px #ff69b4;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 20px 50px;
+            background: #ff1493;
+            color: white;
+            text-decoration: none;
+            font-size: 1.8em;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.6);
+            transition: all 0.4s ease;
+        }
+        .button:hover {
+            background: #ff007f;
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(255, 20, 147, 0.8);
+        }
+        .animated-flower {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            background: url('https://cdn-icons-png.flaticon.com/512/2913/2913975.png') no-repeat center/contain;
+            animation: fly 6s linear infinite, rotate 6s infinite, glow 1.5s infinite alternate;
+        }
+        @keyframes fly {
+            0% { transform: translateY(100vh) translateX(-100vw) rotate(0deg); opacity: 1; }
+            25% { transform: translateY(-50vh) translateX(50vw); }
+            50% { transform: translateY(0vh) translateX(-50vw); }
+            75% { transform: translateY(-30vh) translateX(70vw); }
+            100% { transform: translateY(100vh) translateX(-100vw); opacity: 0; }
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes glow {
+            0% { filter: brightness(1.5); }
+            100% { filter: brightness(2); }
+        }
+        .message-box {
+            width: 600px;
+            padding: 50px;
+            background: white;
+            color: #ff1493;
+            font-size: 2em;
+            font-weight: bold;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+            text-align: center;
+            z-index: 10;
+        }
+        .message-box.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            animation: fadeIn 1s ease;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff1493;
+            border-radius: 50%;
+            animation: sparkle 1s infinite;
+            opacity: 0;
+        }
+        @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+        .floating-icons {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: url('https://cdn-icons-png.flaticon.com/512/2913/2913975.png') no-repeat center/contain;
+            animation: moveIcons 10s linear infinite, glow 1.5s infinite alternate;
+        }
+        @keyframes moveIcons {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(40vw, 30vh) rotate(45deg); }
+            50% { transform: translate(60vw, 20vh) rotate(90deg); }
+            75% { transform: translate(30vw, 50vh) rotate(180deg); }
+            100% { transform: translate(0, 100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>İyi ki Varsın, Bücür Deli Manyak Ruh pastasii! 👑</h1>
+        <p>Senin gibi muhteşem birinin Kadınlar Günü kutlanmaz mı? Sen dünyaya gelen en tatlı felaketsin! 💖</p>
+        <a href="#" class="button" onclick="showMessage()">Mektubu Aç</a>
+        <div class="message-box" id="message">
+            <h2>Sen Olmasan, Dünya Çok Sıkıcı Olurdu! 🌍💫</h2>
+            <p>Senin enerjin, ışığın ve çılgınlıkların bu dünyayı daha yaşanılır yapıyor! Hep böyle kal, çünkü sen eşsizsin! 💕</p>
+        </div>
+        <div class="flowers" id="flowerContainer"></div>
+        <div class="sparkles" id="sparkles"></div>
+    </div>
+    
+    <!-- Floating icons on screen -->
+    <div class="floating-icons" style="top: 10vh; left: 10vw;"></div>
+    <div class="floating-icons" style="top: 50vh; left: 70vw;"></div>
+    <div class="floating-icons" style="top: 70vh; left: 20vw;"></div>
+    <div class="floating-icons" style="top: 30vh; left: 80vw;"></div>
+    
+    <script>
+        function showMessage() {
+            document.getElementById('message').classList.add('active');
+        }
+
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('animated-flower');
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            flower.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('flowerContainer').appendChild(flower);
+            setTimeout(() => {
+                flower.remove();
+            }, 8000);
+        }
+
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            document.getElementById('sparkles').appendChild(sparkle);
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+
+        setInterval(createFlower, 300);
+        setInterval(createSparkle, 150);
+    </script>
+</body>
+</html>
